@@ -63,7 +63,7 @@ public class Cuenta {
 	}
 	public boolean esValorValidoDebitar(BigDecimal valorADebitar) {
 	
-		if(saldo.compareTo(valorADebitar) < 1 && valorADebitar.compareTo(BigDecimal.ZERO) < 0) {
+		if(saldo.compareTo(valorADebitar) < 1 || valorADebitar.compareTo(BigDecimal.ZERO) < 0) {
 			return false;
 	} else {
 			return true;

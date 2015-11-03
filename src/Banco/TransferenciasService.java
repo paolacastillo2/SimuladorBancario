@@ -16,7 +16,7 @@ public class TransferenciasService{
 	
 	
 	
-	public int realizarTransferencia(Cuenta cuentaOrigen, Cuenta cuentaDestino, BigDecimal valorTransferir) {
+	public Transferencia realizarTransferencia(Cuenta cuentaOrigen, Cuenta cuentaDestino, BigDecimal valorTransferir) {
 		
 		Transferencia transferencia = new Transferencia(consecutivoActualTransferencia, cuentaOrigen, cuentaDestino, valorTransferir);
 		consecutivoActualTransferencia++;
@@ -28,17 +28,18 @@ public class TransferenciasService{
 		};
 		
 		List<String> erroresValidaciones = armarListaErroresValidacion(resultadoValidacion);
-		
 		if(erroresValidaciones.isEmpty()) {
+			cuentaOrigen.debitar(valorTransferir);
+			cuentaDestino.acreditar(valorTransferir);
 			//Luz verde para hacer la transferencia
 		} else {
-			//Lanzar Excepción
+		for (String indice : erroresValidaciones )
+			{
+				System.out.println(indice);
+			}
 		}
-		
-		//listaTransferencias.add(transferencia);
-		return consecutivoActualTransferencia;
+		return transferencia;
 	}
-	
 	private List<String> armarListaErroresValidacion(String[] resultadoValidacion) {
 		List<String> mensajesValidaciones = new ArrayList<String>();
 		for(String resultado : resultadoValidacion) {

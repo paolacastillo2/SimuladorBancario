@@ -13,7 +13,7 @@ public class ClientesService {
 	
 	public Cliente crearCliente(String numId, TipoIdentificacion tipoId, TipoCliente tipoCliente){
 		
-		Cliente cliente = new Cliente(consecutivoActualCliente,numId, tipoId, tipoCliente);
+		Cliente cliente = new Cliente(consecutivoActualCliente, numId, tipoId, tipoCliente);
 		consecutivoActualCliente++;
 		listaCliente.add(cliente);
 	
@@ -37,10 +37,4 @@ public class ClientesService {
 		}
 		return null;
 	}
-	
-		 
-	
-	
-	
-	
 }

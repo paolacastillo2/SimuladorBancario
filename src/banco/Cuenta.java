@@ -10,12 +10,12 @@ public class Cuenta {
 	private EstadoCuenta estadoCuenta;
 	private Cliente cliente;
 
-	public Cuenta(int numeroCuenta,TipoCuenta tipoCuenta,BigDecimal saldo,EstadoCuenta estadoCuenta, Cliente cliente){
-		this.numeroCuenta=numeroCuenta;
-		this.tipoCuenta=tipoCuenta;
-		this.saldo=saldo;
-		this.estadoCuenta=estadoCuenta;
-		this.cliente=cliente;
+	public Cuenta(int numeroCuenta, TipoCuenta tipoCuenta, BigDecimal saldo, EstadoCuenta estadoCuenta, Cliente cliente){
+		this.numeroCuenta = numeroCuenta;
+		this.tipoCuenta = tipoCuenta;
+		this.saldo = saldo;
+		this.estadoCuenta = estadoCuenta;
+		this.cliente = cliente;
 		}
 	
 	public int getNumeroCuenta(){

@@ -1,4 +1,4 @@
-package Banco;
+package banco;
 
 
 import java.math.BigDecimal;

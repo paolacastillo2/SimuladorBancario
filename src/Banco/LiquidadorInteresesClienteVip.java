@@ -1,4 +1,4 @@
-package Banco;
+package banco;
 
 public class LiquidadorInteresesClienteVip extends LiquidadorIntereses{
 

@@ -1,4 +1,4 @@
-package Banco;
+package banco;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -11,12 +11,9 @@ public class TransferenciasService{
 
 	private static final int ID_INICIAL_DE_TRANSFERENCIA = 40000;
 	private static int consecutivoActualTransferencia = ID_INICIAL_DE_TRANSFERENCIA;
-	//private List<Transferencia> listaTransferencias = new ArrayList<Transferencia>() ;
 
-	
-	
-	
-	public Transferencia realizarTransferencia(Cuenta cuentaOrigen, Cuenta cuentaDestino, BigDecimal valorTransferir) {
+
+	public Transferencia realizarTransferencia(Cuenta cuentaOrigen, Cuenta cuentaDestino, BigDecimal valorTransferir) throws TransferenciaException {
 		
 		Transferencia transferencia = new Transferencia(consecutivoActualTransferencia, cuentaOrigen, cuentaDestino, valorTransferir);
 		consecutivoActualTransferencia++;
@@ -31,12 +28,11 @@ public class TransferenciasService{
 		if(erroresValidaciones.isEmpty()) {
 			cuentaOrigen.debitar(valorTransferir);
 			cuentaDestino.acreditar(valorTransferir);
-			//Luz verde para hacer la transferencia
+			
 		} else {
-		for (String indice : erroresValidaciones )
-			{
-				System.out.println(indice);
-			}
+			
+			throw new TransferenciaException(""+erroresValidaciones);
+		
 		}
 		return transferencia;
 	}
@@ -51,12 +47,11 @@ public class TransferenciasService{
 	}
 	
 	private String comprobarDisponibilidadFondos(Cuenta cuentaOrigen, BigDecimal valorTransferir) {	
-		String mensajeSaldoInsuficiente = "No se puede hacer la transferencia por saldo insuficiente";
+		String mensajeSaldoInsuficiente = "No se puede hacer la transferencia porque el valor a transferir no cumple las restricciones";
 		
 		if (!cuentaOrigen.esValorValidoDebitar(valorTransferir)) {
 			return mensajeSaldoInsuficiente;
 		}
-		
 		return null;
 	}
 	
@@ -83,18 +78,17 @@ public class TransferenciasService{
 		return null;	
 	}
 	
-
-/*
- * static void rango(int num, int den)throws ExcepcionIntervalo{
-        if((num>100)||(den<-5)){
-            throw new ExcepcionIntervalo("N�meros fuera del intervalo");
-        }
- * */
+	public static void main(String[] args) throws TransferenciaException {
+		BigDecimal debitar = new BigDecimal(26000);
+		Cuenta cuentaOrigen = new Cuenta(10001, TipoCuenta.AHORROS, BigDecimal.valueOf(10000), EstadoCuenta.ACTIVA, null);
+		Cuenta cuentaDestino = new Cuenta(10002, TipoCuenta.AHORROS, BigDecimal.valueOf(20000), EstadoCuenta.ACTIVA, null);
+		TransferenciasService trasferencia = new TransferenciasService();
+		trasferencia.comprobarDisponibilidadFondos(cuentaOrigen, debitar);
+		trasferencia.comprobarCuentaActiva(cuentaOrigen, cuentaDestino);
+		trasferencia.comprobarCuentasSeanDiferente(cuentaOrigen.getNumeroCuenta(), cuentaDestino.getNumeroCuenta());
+		trasferencia.realizarTransferencia(cuentaOrigen, cuentaDestino, debitar);
 	
-	public static void main(String[] args) {
-		List<String> mensajesValidaciones = new ArrayList<String>();
-		mensajesValidaciones.add(null);
-		System.out.println("Tamaño: " + mensajesValidaciones.size());
+
 	}
 }
  

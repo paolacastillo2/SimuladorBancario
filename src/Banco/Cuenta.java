@@ -1,4 +1,4 @@
-package Banco;
+package banco;
 
 import java.math.BigDecimal;
 
@@ -45,7 +45,7 @@ public class Cuenta {
 	 */
 	public void debitar(BigDecimal valorADebitar) throws IllegalArgumentException {
 		if(!esValorValidoDebitar(valorADebitar)) {
-			throw new IllegalArgumentException("Valor a debitar mayor al saldo disponible.");
+			throw new IllegalArgumentException("Valor a debitar no es un valor válido");
 		} else {
 			saldo = saldo.subtract(valorADebitar);
 			System.out.println(saldo);
@@ -54,14 +54,25 @@ public class Cuenta {
 	
 	public void acreditar(BigDecimal valorAcreditar){
 		
+	if(!esValorValidoAcreditar(valorAcreditar)){
+			throw new IllegalArgumentException("Valor a Acreditar no es un valor válido");
+		}else{
 			saldo = saldo.add(valorAcreditar);
 			System.out.println(saldo);
-		
+		}
+	}
+	public boolean esValorValidoDebitar(BigDecimal valorADebitar) {
+	
+		if(saldo.compareTo(valorADebitar) < 1 && valorADebitar.compareTo(BigDecimal.ZERO) < 0) {
+			return false;
+	} else {
+			return true;
+		}
 	}
 	
-	
-	public boolean esValorValidoDebitar(BigDecimal valorADebitar) {
-		if(saldo.compareTo(valorADebitar) < 1) {
+	public boolean esValorValidoAcreditar(BigDecimal valorAAcreditar) {
+		if(valorAAcreditar.compareTo(BigDecimal.ZERO) < 0) {
+			
 			return false;
 		} else {
 			return true;
@@ -76,19 +87,8 @@ public class Cuenta {
 				", estadoCuenta=" + estadoCuenta + 
 				", cliente=" + cliente + "]";
 	}
+	
 
-	public static void main  (String arg[]){
-		
-		BigDecimal debitar = BigDecimal.valueOf(500);
-		Cuenta cuenta1 = new Cuenta(10001, TipoCuenta.AHORROS, BigDecimal.valueOf(1000), EstadoCuenta.ACTIVA, null);
-		Cuenta cuenta2 = new Cuenta(10002, TipoCuenta.AHORROS, BigDecimal.valueOf(2000), EstadoCuenta.ACTIVA, null);
-		cuenta1.debitar(debitar);
-		
-		cuenta2.acreditar(debitar);
-
-		
-		
-	}
 }
 
 

@@ -1,4 +1,4 @@
-package Banco;
+package banco;
 
 //papa
 public abstract class LiquidadorIntereses {

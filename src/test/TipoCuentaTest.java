@@ -6,7 +6,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class TipoIdentificacionTest {
+public class TipoCuentaTest {
 
 	@Before
 	public void setUp() throws Exception {
@@ -17,17 +17,7 @@ public class TipoIdentificacionTest {
 	}
 
 	@Test
-	public void testTipoIdentificacion() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testTipoIdentificacionString() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetDescripcion() {
+	public void test() {
 		fail("Not yet implemented");
 	}
 

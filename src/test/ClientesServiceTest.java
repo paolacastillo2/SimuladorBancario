@@ -1,31 +1,41 @@
 package test;
 
-import junit.framework.TestCase;
+import static org.junit.Assert.*;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
-public class ClientesServiceTest extends TestCase {
 
-	protected void setUp() throws Exception {
-		super.setUp();
+
+public class ClientesServiceTest {
+	
+	
+	@Before
+	public void setUp() throws Exception {
+		
 	}
 
-	protected void tearDown() throws Exception {
-		super.tearDown();
+	@After
+	public void tearDown() throws Exception {}
+	
+	@Test
+	public void generarCodBanco(){
+		
 	}
 
+	@Test
 	public void testCrearCliente() {
-		ClientesService cliente1= new ClientesService();
-		//consecutivoActualCliente, numId, tipoId, tipoCliente
 		
-		
-	   
 	}
 
+	@Test
 	public void testImprimirLista() {
-		fail("Not yet implemented");
+		
 	}
 
+	@Test
 	public void testGetListaCliente() {
-		fail("Not yet implemented");
+		
 	}
 
 }

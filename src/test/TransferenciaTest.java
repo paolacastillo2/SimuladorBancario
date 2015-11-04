@@ -1,33 +1,42 @@
-package banco;
+package test;
 
-import junit.framework.TestCase;
+import static org.junit.Assert.*;
 
-public class TransferenciaTest extends TestCase {
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
-	protected void setUp() throws Exception {
-		super.setUp();
+public class TransferenciaTest {
+
+	@Before
+	public void setUp() throws Exception {
 	}
 
-	protected void tearDown() throws Exception {
-		super.tearDown();
+	@After
+	public void tearDown() throws Exception {
 	}
 
+	@Test
 	public void testTransferencia() {
 		fail("Not yet implemented");
 	}
 
+	@Test
 	public void testGetCuentaOrigen() {
 		fail("Not yet implemented");
 	}
 
+	@Test
 	public void testGetCuentaDestino() {
 		fail("Not yet implemented");
 	}
 
+	@Test
 	public void testGetValor() {
 		fail("Not yet implemented");
 	}
 
+	@Test
 	public void testGetidentificadorTransferencia() {
 		fail("Not yet implemented");
 	}

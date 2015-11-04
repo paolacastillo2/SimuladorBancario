@@ -15,6 +15,7 @@ public class Cliente {
 	}
 	
 	public int getCodAnteBanco(){
+		
 		return codAnteBanco;
 	}
 	

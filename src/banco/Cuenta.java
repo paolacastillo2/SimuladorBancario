@@ -54,7 +54,7 @@ public class Cuenta {
 	
 	public void acreditar(BigDecimal valorAcreditar){
 		
-	if(!esValorValidoAcreditar(valorAcreditar)){
+		if(!esValorValidoAcreditar(valorAcreditar)){
 			throw new IllegalArgumentException("Valor a Acreditar no es un valor válido");
 		}else{
 			saldo = saldo.add(valorAcreditar);

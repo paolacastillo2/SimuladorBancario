@@ -79,7 +79,7 @@ public class TransferenciasService{
 	}
 	
 	public static void main(String[] args) throws TransferenciaException {
-		BigDecimal debitar = new BigDecimal(26000);
+		BigDecimal debitar = new BigDecimal(260);
 		Cuenta cuentaOrigen = new Cuenta(10001, TipoCuenta.AHORROS, BigDecimal.valueOf(10000), EstadoCuenta.ACTIVA, null);
 		Cuenta cuentaDestino = new Cuenta(10002, TipoCuenta.AHORROS, BigDecimal.valueOf(20000), EstadoCuenta.ACTIVA, null);
 		TransferenciasService trasferencia = new TransferenciasService();
